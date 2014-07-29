@@ -1,0 +1,20 @@
+<div class="listContainer">
+	<h1>LOCATIONS</h1>
+
+	<ul>
+		<% @locations.each do |location| %>
+			<li>
+				<% if location.name.present? %>
+					<span class="<%= cycle("listFont", "listFont2") -%>"><%= location.name %>-</span>
+				<% end %>
+					<span class="listFont"><%= link_to location.city, location_visits_path(location) %></span>
+				<div class="buttonContainer">
+					<button class="infoButton marginRight"><%= link_to "Edit", edit_location_path(location) %></button>
+					<button class="infoButton marginRight"><%= link_to "Delete",location_path(location),:method => :delete, data: {confirm: "Are you shure?"}%></button>
+				</div>
+			</li>
+		<% end %>	
+	</ul>
+<div>
+
+<button class="succesButton"><%= link_to "New", new_location_path %></button>

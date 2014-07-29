@@ -1,0 +1,19 @@
+<%= flash_messages %>
+
+
+<ul>
+	<% @visits.each do |visit| %>
+	<li>
+		<% if visit.location_id.present? %>
+		 Visit <%= visit.user_name %> -
+			Location ID <%= visit.location_id %> -
+		<% end %>
+		<%= link_to "Edit", edit_location_visit_path(@location, visit) %>
+		<%= link_to "Delete",location_visit_path(@location, visit),:method => :delete, data: {confirm: "Are you shure?"}%>
+		</li>
+
+		<% end %>
+	</ul>
+
+</ul>
+<li><%= link_to "new", new_user_visit_path(@location) %>
